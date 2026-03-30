@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
+  /* Colors */
   --ink: #0d0d0f;
   --cream: #f5f0e8;
   --gold: #c8a96e;
@@ -19,6 +20,30 @@
   --card-bg: #ffffff;
   --border: rgba(13,13,15,0.1);
   --etsy: #F1641E;
+  
+  /* Flexible Spacing (scales with viewport) */
+  --spacing-xs: clamp(0.5rem, 1vw, 0.75rem);
+  --spacing-sm: clamp(0.75rem, 2vw, 1rem);
+  --spacing-md: clamp(1rem, 3vw, 1.5rem);
+  --spacing-lg: clamp(1.5rem, 5vw, 2rem);
+  --spacing-xl: clamp(2rem, 6vw, 3rem);
+  --spacing-2xl: clamp(3rem, 8vw, 4rem);
+  --spacing-3xl: clamp(4rem, 10vw, 5rem);
+  
+  /* Responsive Padding */
+  --padding-inline: clamp(1rem, 4vw, 4rem);
+  --padding-block: clamp(2rem, 8vw, 5rem);
+  
+  /* Font Sizes (fluid typography) */
+  --text-xs: clamp(0.7rem, 1.5vw, 0.85rem);
+  --text-sm: clamp(0.8rem, 1.75vw, 0.95rem);
+  --text-base: clamp(0.95rem, 2vw, 1.1rem);
+  --text-lg: clamp(1.1rem, 2.25vw, 1.35rem);
+  --text-xl: clamp(1.35rem, 3vw, 1.75rem);
+  --text-2xl: clamp(1.75rem, 4vw, 2.25rem);
+  --text-3xl: clamp(2.25rem, 5vw, 2.8rem);
+  --text-4xl: clamp(2.8rem, 6vw, 3.5rem);
+  --text-5xl: clamp(3.5rem, 7vw, 4.5rem);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }

@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
+  /* Colors */
   --ink: #0d0d0f;
   --cream: #f5f0e8;
   --gold: #c8a96e;
@@ -19,6 +20,30 @@
   --card-bg: #ffffff;
   --border: rgba(13,13,15,0.1);
   --etsy: #F1641E;
+  
+  /* Flexible Spacing (scales with viewport) */
+  --spacing-xs: clamp(0.5rem, 1vw, 0.75rem);
+  --spacing-sm: clamp(0.75rem, 2vw, 1rem);
+  --spacing-md: clamp(1rem, 3vw, 1.5rem);
+  --spacing-lg: clamp(1.5rem, 5vw, 2rem);
+  --spacing-xl: clamp(2rem, 6vw, 3rem);
+  --spacing-2xl: clamp(3rem, 8vw, 4rem);
+  --spacing-3xl: clamp(4rem, 10vw, 5rem);
+  
+  /* Responsive Padding */
+  --padding-inline: clamp(1rem, 4vw, 4rem);
+  --padding-block: clamp(2rem, 8vw, 5rem);
+  
+  /* Font Sizes (fluid typography) */
+  --text-xs: clamp(0.7rem, 1.5vw, 0.85rem);
+  --text-sm: clamp(0.8rem, 1.75vw, 0.95rem);
+  --text-base: clamp(0.95rem, 2vw, 1.1rem);
+  --text-lg: clamp(1.1rem, 2.25vw, 1.35rem);
+  --text-xl: clamp(1.35rem, 3vw, 1.75rem);
+  --text-2xl: clamp(1.75rem, 4vw, 2.25rem);
+  --text-3xl: clamp(2.25rem, 5vw, 2.8rem);
+  --text-4xl: clamp(2.8rem, 6vw, 3.5rem);
+  --text-5xl: clamp(3.5rem, 7vw, 4.5rem);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1166,25 +1191,267 @@ footer { background: var(--ink); color: var(--cream); }
 }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-/* ── RESPONSIVE ── */
-@media (max-width: 900px) {
-  nav { padding: 1rem 1.5rem; }
+/* ── RESPONSIVE DESIGN - MOBILE FIRST ────────────── */
+
+/* MOBILE (320px - 480px) */
+@media (max-width: 480px) {
+  html { font-size: 14px; }
+  
+  nav { 
+    padding: var(--spacing-sm) var(--spacing-md);
+    flex-direction: column;
+  }
+  .nav-logo { font-size: clamp(1rem, 2.5vw, 1.25rem); }
   .nav-links { display: none; }
-  .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; }
+  
+  .hero { 
+    grid-template-columns: 1fr;
+    padding: var(--spacing-xl) var(--spacing-md) var(--spacing-lg);
+  }
   .hero-visual { display: none; }
-  section { padding: 4rem 1.5rem; }
-  .overview { grid-template-columns: 1fr; gap: 3rem; }
-  .overview-visual { height: 260px; }
-  .features-grid { grid-template-columns: 1fr; }
-  .pricing-grid { grid-template-columns: 1fr; }
-  .pricing-card.featured { transform: none; }
-  .two-col { grid-template-columns: 1fr; }
-  .footer-main { grid-template-columns: 1fr 1fr; padding: 3rem 1.5rem; }
-  .footer-cta { padding: 4rem 1.5rem; }
-  .footer-bottom { padding: 1.25rem 1.5rem; flex-direction: column; text-align: center; }
-  .trust-bar { padding: 1.25rem; gap: 1.25rem; }
+  .hero h1 { font-size: clamp(1.5rem, 4vw, 2rem); }
+  
+  section { padding: var(--spacing-2xl) var(--spacing-md); }
+  
+  .overview { 
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+  .overview-visual { height: 200px; }
+  
+  .features-grid { 
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+  
+  .pricing-grid { 
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+  .pricing-card.featured { 
+    transform: none;
+    padding: var(--spacing-lg);
+  }
+  
+  .two-col { 
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+  
+  .footer-main { 
+    grid-template-columns: 1fr;
+    padding: var(--spacing-2xl) var(--spacing-md);
+    gap: var(--spacing-2xl);
+  }
+  .footer-cta { padding: var(--spacing-2xl) var(--spacing-md); }
+  .footer-bottom { 
+    padding: var(--spacing-md);
+    flex-direction: column;
+    text-align: center;
+    gap: var(--spacing-md);
+  }
+  .trust-bar { 
+    padding: var(--spacing-md);
+    gap: var(--spacing-md);
+    flex-direction: column;
+  }
+  
   .step-card-header { flex-direction: column; }
-  .step-num-block { width: 100%; height: 64px; flex-direction: row; gap: 1rem; justify-content: flex-start; padding: 1rem 1.5rem; }
+  .step-num-block { 
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    justify-content: flex-start;
+    padding: var(--spacing-md);
+  }
+  
+  h2 { font-size: var(--text-2xl) !important; }
+  h3 { font-size: var(--text-lg) !important; }
+  p { font-size: var(--text-sm); }
+}
+
+/* TABLET (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  html { font-size: 15px; }
+  
+  nav { 
+    padding: var(--spacing-sm) var(--spacing-lg);
+    flex-wrap: wrap;
+  }
+  .nav-logo { font-size: clamp(1.1rem, 2.75vw, 1.35rem); }
+  .nav-links { 
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+  }
+  
+  .hero { 
+    grid-template-columns: 1fr;
+    padding: var(--spacing-2xl) var(--spacing-lg) var(--spacing-xl);
+  }
+  .hero-visual { display: none; }
+  .hero h1 { font-size: clamp(2rem, 4.5vw, 2.25rem); }
+  
+  section { padding: var(--spacing-2xl) var(--spacing-lg); }
+  
+  .overview { 
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+  .overview-visual { height: 260px; }
+  
+  .features-grid { 
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+  }
+  
+  .pricing-grid { 
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+  }
+  .pricing-card.featured { 
+    transform: none;
+    padding: var(--spacing-lg);
+  }
+  
+  .two-col { 
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+  }
+  
+  .footer-main { 
+    grid-template-columns: repeat(2, 1fr);
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    gap: var(--spacing-2xl);
+  }
+  .footer-cta { padding: var(--spacing-2xl) var(--spacing-lg); }
+  .footer-bottom { 
+    padding: var(--spacing-lg);
+    flex-direction: row;
+    gap: var(--spacing-lg);
+  }
+  .trust-bar { 
+    padding: var(--spacing-lg);
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+  }
+  
+  .step-card-header { flex-direction: row; }
+  .step-num-block { 
+    width: auto;
+    height: 80px;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    justify-content: center;
+    padding: var(--spacing-lg);
+  }
+  
+  h2 { font-size: var(--text-3xl) !important; }
+  h3 { font-size: var(--text-xl) !important; }
+}
+
+/* LARGE TABLET / SMALL LAPTOP (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  html { font-size: 15.5px; }
+  
+  nav { padding: var(--spacing-sm) var(--spacing-2xl); }
+  
+  .hero { 
+    grid-template-columns: 1fr 1fr;
+    padding: var(--spacing-2xl) var(--spacing-2xl) var(--spacing-xl);
+  }
+  .hero h1 { font-size: clamp(2.25rem, 4.5vw, 2.8rem); }
+  
+  section { padding: var(--spacing-2xl) var(--spacing-2xl); }
+  
+  .overview { 
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-xl);
+  }
+  .overview-visual { height: 300px; }
+  
+  .features-grid { 
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+  }
+  
+  .pricing-grid { 
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+  }
+  .pricing-card.featured { 
+    transform: translateY(-12px);
+    padding: var(--spacing-lg);
+  }
+  
+  .two-col { 
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-xl);
+  }
+  
+  .footer-main { 
+    grid-template-columns: repeat(3, 1fr);
+    padding: var(--spacing-3xl) var(--spacing-2xl);
+    gap: var(--spacing-2xl);
+  }
+  .footer-cta { padding: var(--spacing-2xl) var(--spacing-2xl); }
+  
+  .trust-bar { 
+    padding: var(--spacing-lg);
+    gap: var(--spacing-lg);
+  }
+}
+
+/* DESKTOP (1025px and up) */
+@media (min-width: 1025px) {
+  html { font-size: 16px; }
+  
+  nav { padding: var(--spacing-sm) var(--spacing-3xl); }
+  
+  .hero { 
+    grid-template-columns: 1fr 1fr;
+    padding: var(--spacing-3xl) var(--spacing-3xl) var(--spacing-2xl);
+  }
+  
+  section { padding: var(--spacing-3xl) var(--spacing-3xl); }
+  
+  .overview { 
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-2xl);
+  }
+  .overview-visual { height: 320px; }
+  
+  .features-grid { 
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xl);
+  }
+  
+  .pricing-grid { 
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xl);
+  }
+  .pricing-card.featured { 
+    transform: translateY(-24px);
+    box-shadow: 0 24px 48px rgba(26,122,110,0.12);
+  }
+  
+  .two-col { 
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-2xl);
+  }
+  
+  .footer-main { 
+    grid-template-columns: repeat(4, 1fr);
+    padding: var(--spacing-3xl);
+    gap: var(--spacing-3xl);
+  }
+  .footer-cta { padding: var(--spacing-3xl); }
+  
+  .trust-bar { 
+    padding: var(--spacing-lg);
+    gap: var(--spacing-lg);
+  }
 }
 </style>
 </head>
