@@ -1,1 +1,9 @@
-https://vasquez14ariel.gitlab.io/virtuallydesign.github.io/
+pages:
+  stage: deploy
+  script:
+    - echo "Deploying to GitHub Pages"
+  artifacts:
+    paths:
+      - public
+  only:
+    - main
